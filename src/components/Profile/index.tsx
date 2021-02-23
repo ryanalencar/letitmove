@@ -22,6 +22,10 @@ const ProfileContainer = styled.div`
     p {
       font-size: 1rem;
       margin-top: 0.5rem;
+
+      img {
+        margin-right: 0.5rem;
+      }
     }
   }
 `
@@ -32,7 +36,10 @@ function Profile() {
       <img src="https://github.com/ryanalencar.png" alt="Imagem de Perfil" />
       <div>
         <strong>Ryan Alencar</strong>
-        <p>Level 1</p>
+        <p>
+          <img src="icons/level.svg" alt="Ícone level" />
+          Level 1
+        </p>
       </div>
     </ProfileContainer>
   )
