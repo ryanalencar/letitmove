@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import styled from 'styled-components'
+import { ChallengeContext } from '../../contexts/Challenge'
 
 const ChallengesContainer = styled.div`
   display: flex;
@@ -20,10 +22,12 @@ const ChallengesContainer = styled.div`
 `
 
 function CompletedChallenges() {
+  const { challengesCompleted } = useContext(ChallengeContext)
+
   return (
     <ChallengesContainer>
       <span>Desafios Completos</span>
-      <span>5</span>
+      <span>{challengesCompleted}</span>
     </ChallengesContainer>
   )
 }

@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ChallengeContext } from '../../contexts/Challenge'
 import { CurrentExp, ExpBar, GrayLine, ProgressExp } from './styles'
 
 const ExperienceBar: React.FC = () => {
+  const { currentExp, experienceToNextLevel } = useContext(ChallengeContext)
+
+  const percentToNextLevel = Math.round(currentExp * 100) / experienceToNextLevel
+
   return (
     <ExpBar>
       <span>0 xp</span>
       <GrayLine>
-        <ProgressExp width={50} />
-        <CurrentExp left={50}>300xp</CurrentExp>
+        <ProgressExp width={percentToNextLevel} />
+        <CurrentExp left={percentToNextLevel}>{currentExp}xp</CurrentExp>
       </GrayLine>
-      <span>600 xp</span>
+      <span>{experienceToNextLevel} xp</span>
     </ExpBar>
   )
 }
