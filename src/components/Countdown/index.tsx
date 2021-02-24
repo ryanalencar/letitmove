@@ -1,68 +1,12 @@
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import { CountdownButton, CountdownContainer } from './styles'
 
-const CountdownContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-family: Rajdhani;
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.title};
-
-  & > span {
-    font-size: 6.25rem;
-    margin: 0 0.5rem;
-  }
-
-  & > div {
-    flex: 1;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-    background: ${({ theme }) => theme.background};
-    box-shadow: 0 0 68px rgba(0, 0, 0, 0.05);
-    border-radius: 5px;
-    font-size: 8.5rem;
-    text-align: center;
-
-    span {
-      flex: 1;
-    }
-
-    span:first-child {
-      border-right: 1px solid #f0f1f3;
-    }
-    span:last-child {
-      border-left: 1px solid #f0f1f3;
-    }
-  }
-`
-
-const CountdownButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  height: 5rem;
-  margin-top: 2rem;
-  border: 0;
-  border-radius: 5px;
-  background: ${({ theme }) => theme.colors.blue};
-  color: ${({ theme }) => theme.colors.white};
-  font-size: 1.25rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.blueDark};
-  }
-`
+let countdownTimeout: NodeJS.Timeout
 
 function Countdown() {
-  const [time, setTime] = useState(1 * 60)
-  const [active, setActive] = useState(false)
+  const [time, setTime] = useState(0.1 * 60)
+  const [isActive, setIsActive] = useState(false)
+  const [hasFinished, setHasFinished] = useState(false)
 
   const minutes = Math.floor(time / 60)
   const seconds = time % 60
@@ -71,16 +15,25 @@ function Countdown() {
   const [secLeft, secRight] = String(seconds).padStart(2, '0').split('')
 
   const startCountdown = () => {
-    setActive(true)
+    setIsActive(true)
+  }
+
+  const resetCountdown = () => {
+    clearTimeout(countdownTimeout)
+    setIsActive(false)
+    setTime(0.1 * 60)
   }
 
   useEffect(() => {
-    if (active && time > 0) {
-      setTimeout(() => {
+    if (isActive && time > 0) {
+      countdownTimeout = setTimeout(() => {
         setTime(time - 1)
       }, 1000)
+    } else if (isActive && time === 0) {
+      setHasFinished(true)
+      setIsActive(false)
     }
-  }, [active, time])
+  }, [isActive, time])
 
   return (
     <div>
@@ -95,9 +48,17 @@ function Countdown() {
           <span>{secRight}</span>
         </div>
       </CountdownContainer>
-      <CountdownButton type="button" onClick={startCountdown}>
-        Iniciar um ciclo
-      </CountdownButton>
+      {hasFinished ? (
+        <CountdownButton disabled>Ciclo Encerrado</CountdownButton>
+      ) : (
+        <CountdownButton
+          type="button"
+          onClick={isActive ? resetCountdown : startCountdown}
+          active={isActive}
+        >
+          {isActive ? 'Abandonar Ciclo' : 'Iniciar um ciclo'}
+        </CountdownButton>
+      )}
     </div>
   )
 }
