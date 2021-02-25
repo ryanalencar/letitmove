@@ -9,7 +9,7 @@ const ExperienceBar: React.FC = () => {
 
   return (
     <ExpBar>
-      <span>0 xp</span>
+      <span>{currentExp} xp</span>
       <GrayLine>
         <ProgressExp width={percentToNextLevel} />
         <CurrentExp left={percentToNextLevel}>{currentExp}xp</CurrentExp>

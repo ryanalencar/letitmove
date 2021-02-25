@@ -49,7 +49,8 @@ export function ChallengeProvider({ children }: IChallengeProviderProps) {
 
     if (Notification.permission === 'granted') {
       new Notification('novo desafio🎉', {
-        body: `Valendo ${challenge.amount}xp!`
+        body: `Valendo ${challenge.amount}xp!`,
+        silent: true
       })
     }
   }
