@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import styled from 'styled-components'
+import { ChallengeContext } from '../../contexts/Challenge'
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -31,6 +33,8 @@ const ProfileDetails = styled.div`
 `
 
 function Profile() {
+  const { level } = useContext(ChallengeContext)
+
   return (
     <ProfileContainer>
       <ProfileImage src="https://github.com/ryanalencar.png" alt="Imagem de Perfil" />
@@ -38,7 +42,7 @@ function Profile() {
         <strong>Ryan Alencar</strong>
         <p>
           <img src="icons/level.svg" alt="Ícone level" />
-          Level 1
+          Level {level}
         </p>
       </ProfileDetails>
     </ProfileContainer>
