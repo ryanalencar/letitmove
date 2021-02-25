@@ -23,21 +23,15 @@ function Countdown() {
         </div>
       </CountdownContainer>
       {hasFinished ? (
-        <>
-          <CountdownButton disabled>Ciclo Encerrado</CountdownButton>
-          <h1>HasFinished={hasFinished.toString()}</h1>
-        </>
+        <CountdownButton disabled>Ciclo Encerrado</CountdownButton>
       ) : (
-        <>
-          <h1>HasFinished={hasFinished.toString()}</h1>
-          <CountdownButton
-            type="button"
-            onClick={isActive ? resetCountdown : startCountdown}
-            active={isActive}
-          >
-            {isActive ? 'Abandonar Ciclo' : 'Iniciar um ciclo'}
-          </CountdownButton>
-        </>
+        <CountdownButton
+          type="button"
+          onClick={isActive ? resetCountdown : startCountdown}
+          active={isActive}
+        >
+          {isActive ? 'Abandonar Ciclo' : 'Iniciar um ciclo'}
+        </CountdownButton>
       )}
     </div>
   )
