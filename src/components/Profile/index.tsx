@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import styled from 'styled-components'
-import { ChallengeContext } from '../../contexts/Challenge'
+import { ChallengeContext } from '../../contexts/ChallengeContext'
 
 const ProfileContainer = styled.div`
   display: flex;

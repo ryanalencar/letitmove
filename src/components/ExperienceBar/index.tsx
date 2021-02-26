@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ChallengeContext } from '../../contexts/Challenge'
+import { ChallengeContext } from '../../contexts/ChallengeContext'
 import { CurrentExp, ExpBar, GrayLine, ProgressExp } from './styles'
 
 const ExperienceBar: React.FC = () => {

@@ -28,6 +28,7 @@ interface IChallengeContextData {
   startNewChallenge: () => void
   resetChallenge: () => void
   completeChallenge: () => void
+  closeLevelUpModal: () => void
 }
 
 export const ChallengeContext = createContext({} as IChallengeContextData)
@@ -93,6 +94,10 @@ export function ChallengeProvider({ children, ...rest }: IChallengeProviderProps
     setChallengesCompleted(challengesCompleted + 1)
   }
 
+  const closeLevelUpModal = () => {
+    setIsLevelUpModalOpen(false)
+  }
+
   return (
     <ChallengeContext.Provider
       value={{
@@ -104,7 +109,8 @@ export function ChallengeProvider({ children, ...rest }: IChallengeProviderProps
         activeChallenge,
         resetChallenge,
         experienceToNextLevel,
-        completeChallenge
+        completeChallenge,
+        closeLevelUpModal
       }}
     >
       {children}

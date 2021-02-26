@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
-import { ChallengeContext } from './Challenge'
+import { ChallengeContext } from './ChallengeContext'
 
 interface ICountdownProviderProps {
   children: ReactNode

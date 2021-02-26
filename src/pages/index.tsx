@@ -7,8 +7,8 @@ import Profile from '../components/Profile'
 import CompletedChallenges from '../components/CompletedChallenges'
 import ChallengeBox from '../components/ChallengeBox'
 import Countdown from '../components/Countdown'
-import { CountdownProvider } from '../contexts/CountDown'
-import { ChallengeProvider } from '../contexts/Challenge'
+import { CountdownProvider } from '../contexts/CountdownContext'
+import { ChallengeProvider } from '../contexts/ChallengeContext'
 
 interface IHomeProps {
   level: number

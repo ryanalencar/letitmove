@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import styled from 'styled-components'
-import { ChallengeContext } from '../../contexts/Challenge'
+import { ChallengeContext } from '../../contexts/ChallengeContext'
 
 const Overlay = styled.div`
   background: rgba(242, 243, 245, 0.8);
@@ -53,7 +53,7 @@ const ModalContainer = styled.div`
 `
 
 function LevelUpModal() {
-  const { level } = useContext(ChallengeContext)
+  const { level, closeLevelUpModal } = useContext(ChallengeContext)
   return (
     <Overlay>
       <ModalContainer>
@@ -62,7 +62,7 @@ function LevelUpModal() {
         <strong>Parabéns</strong>
         <p>Você alcançou um novo nível</p>
 
-        <button>
+        <button type="button" onClick={closeLevelUpModal}>
           <img src="/icons/close.svg" alt="Fechar modal" />
         </button>
       </ModalContainer>
