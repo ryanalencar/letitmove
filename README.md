@@ -6,7 +6,7 @@
 ### ✨ [Demo](https://letitmove.vercel.app/)
 
 ## About the project
-It aims at studying and developing an application for listing movies according to gender in ReactJS with Typescript.
+Let It Move is an application to encourage those who spend hours at the computer to exercise, using the pomodoro method, every 25 minutes concentrated on work they will have a break to do a little exercise and with the addition of gamification in the application everything is more fun.
 
 ## Technologies
 - ReactJs
